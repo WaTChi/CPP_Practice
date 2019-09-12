@@ -1,3 +1,5 @@
-# TestRepo
- JustTest
-It's a TEST text file.
+License: care about sharing improvements.
+
+GNU General Public License v3.0
+
+
