@@ -3,3 +3,11 @@ License: care about sharing improvements.
 GNU General Public License v3.0
 
 
+C++:
+file: AbstractCircle.h
+class AbstractCircle{
+public:
+	virtual void someFunction() = 0;
+}
+
+It's empty, and whomever extends the AbstractCircle class needs to implement virtual function.
