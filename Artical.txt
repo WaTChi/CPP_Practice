@@ -10,4 +10,28 @@ public:
 	virtual void someFunction() = 0;
 }
 
-It's empty, and whomever extends the AbstractCircle class needs to implement virtual function.
+0 means it's empty, and whomever extends the AbstractCircle class needs to implement virtual function.
+
+And the class with virtual function is Abstract class, so class AbstractCircle can't be instanced.
+
+
+In C++, struct can contain functions.
+It's just like a class with all members public.
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) :
+    val(x), next(NULL) {}
+};
+
+
+    ListNode(int x) : ---> It's the constructor of this struct
+    val(x), ---> means val's initial value would be x
+    next(NULL){} ---> and next's initial value would be NULL
+    	   ^^^^^ And remember the Priority order would be...
+                 1. the small parentheses
+		 2. the big parentheses
+
+
+
