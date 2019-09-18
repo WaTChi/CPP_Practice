@@ -2,21 +2,23 @@ License: care about sharing improvements.
 
 GNU General Public License v3.0
 
+-------------------------------------------------------------------------------
 
 C++:
 file: AbstractCircle.h
 class AbstractCircle{
 public:
-	virtual void someFunction() = 0;
+    virtual void someFunction() = 0;
 }
 
-0 means it's empty, and whomever extends the AbstractCircle class needs to implement virtual function.
+0 代表這個function是空的.
+而任何繼承AbstractCircle的class都 MUST implement virtual function - someFunction().
+而C++中只要擁有virtual function的class就是Abstract class, 而Abstract class是不能instanced(實體化)的.
 
-And the class with virtual function is Abstract class, so class AbstractCircle can't be instanced.
+-------------------------------------------------------------------------------
 
-
-In C++, struct can contain functions.
-It's just like a class with all members public.
+在C++之中, struct內是可以有function的
+C++的struct就像是一個全部members皆為public的class而已
 
 struct ListNode {
     int val;
@@ -26,12 +28,53 @@ struct ListNode {
 };
 
 
-    ListNode(int x) : ---> It's the constructor of this struct
+    ListNode(int x) : ---> 這是這個struct的預設值,有點類似class中constructor的概念
     val(x), ---> means val's initial value would be x
     next(NULL){} ---> and next's initial value would be NULL
     	   ^^^^^ And remember the Priority order would be...
-                 1. the small parentheses
-		 2. the big parentheses
+                 1. 小括號先執行
+		 2. 之後才執行大括號
+
+-------------------------------------------------------------------------------
+for 32-bit application -> 4 bytes address
+
+void* ptr = 0; -> 意思是ptr這個指標我們初始給他一個invalid memory address.Just like NULL.
+void* ptr = nullptr; -> nullptr為C++的保留字, means NULL pointer.
+int var = 8;
+int* ptr2 = &var;
+*ptr2 = 10; ---> var變成了10.
+
+char* buffer = new char[8]; -> 要求了8 bytes, 因為一個char佔1 byte.
+memset(buffer, 0, 8); -> 把這8 bytes的位置都設為0, it's heap allocated, 需要Programmer記得自己去刪除以及控管, 否則會memory leak.
+
+Stack Allocation : The allocation happens on contiguous blocks of memory. We call it stack memory allocation because the allocation happens in function call stack.
+
+
+char** ptrOfptr = &buffer; -> 讓一個Pointer的Pointer去儲存buffer的memory address
+
+delete[] buffer;
+
+從C++呼叫function傳遞parameter的機制中，是無法立刻看出是pass by value還是pass by reference的
+需要看實際function內寫的東西，才能知道是怎麼pass.
+
+Function Pointer:
+void HelloWorld(int a){
+    std::out << "Hello World: " << a << std::endl;
+}
+
+int main(){
+    typedef void(*HelloWorldFunction)(int);
+    HelloWorldFunction function = HelloWorld;
+    function(8);
+
+//    void(*cherry)() = HelloWorld;
+    cherry();
+}
+
+
+
+
+
 
 
 
